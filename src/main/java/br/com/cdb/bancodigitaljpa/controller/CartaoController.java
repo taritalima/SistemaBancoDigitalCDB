@@ -59,10 +59,10 @@ public class CartaoController {
 	@Autowired
 	CartaoCreditoRepository cartaoCreditoRepository;
 
-	@PostMapping("/{contaId}")
-	public ResponseEntity<MessageResponseDTO> criarCartao(@PathVariable Long contaId,
+	@PostMapping("/{id}")
+	public ResponseEntity<MessageResponseDTO> criarCartao(@PathVariable Long id,
 			@Valid @RequestBody TipoCartaoDTO tipoCartao) {
-		Optional<Conta> contaOptional = contaRepository.findById(contaId);
+		Optional<Conta> contaOptional = contaRepository.findById(id);
 
 		if (contaOptional.isEmpty()) {
 			MessageResponseDTO response = new MessageResponseDTO("Conta não encontrada.", HttpStatus.NOT_FOUND.value(),
